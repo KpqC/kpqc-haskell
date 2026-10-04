@@ -38,13 +38,19 @@
 #define pack_R2_11 SMAUGT_NAMESPACE(pack_R2_11)
 #define unpack_R2_11 SMAUGT_NAMESPACE(unpack_R2_11)
 
-void PACK_RING(SMAUGT_LOG_Q)(uint8_t *bytes, const poly *data);
-void UNPACK_RING(SMAUGT_LOG_Q)(poly *data, const uint8_t *bytes);
+void PACK_RING(SMAUGT_LOG_Q)(uint8_t bytes[SMAUGT_PKPOLY_BYTES],
+                             const poly *data);
+void UNPACK_RING(SMAUGT_LOG_Q)(
+    poly *data, const uint8_t bytes[SMAUGT_PKPOLY_BYTES]);
 
-void PACK_RING(SMAUGT_LOG_P)(uint8_t *bytes, const poly *data);
-void UNPACK_RING(SMAUGT_LOG_P)(poly *data, const uint8_t *bytes);
+void PACK_RING(SMAUGT_LOG_P)(uint8_t bytes[SMAUGT_CTPOLY1_BYTES],
+                             const poly *data);
+void UNPACK_RING(SMAUGT_LOG_P)(
+    poly *data, const uint8_t bytes[SMAUGT_CTPOLY1_BYTES]);
 
-void PACK_RING(SMAUGT_LOG_P_PRIME)(uint8_t *bytes, const poly *data);
-void UNPACK_RING(SMAUGT_LOG_P_PRIME)(poly *data, const uint8_t *bytes);
+void PACK_RING(SMAUGT_LOG_P_PRIME)(uint8_t bytes[SMAUGT_CTPOLY2_BYTES],
+                                   const poly *data);
+void UNPACK_RING(SMAUGT_LOG_P_PRIME)(
+    poly *data, const uint8_t bytes[SMAUGT_CTPOLY2_BYTES]);
 
 #endif /* !SMAUGT_PACK_RING_H */
