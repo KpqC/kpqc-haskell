@@ -1,0 +1,10 @@
+/dist-newstyle/
+/.stack-work/
+/dist/
+*.hie
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+*.tar.gz
+

@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            ghc: "8.10"
+          - os: ubuntu-latest
+            ghc: "9.10"
+          - os: ubuntu-latest
+            ghc: "9.14"
+          - os: macos-latest
+            ghc: "9.14"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ matrix.ghc }}
+          cabal-version: latest
+      - uses: actions/cache@v6
+        with:
+          path: ~/.cache/cabal
+          key: ${{ runner.os }}-ghc-${{ matrix.ghc }}-${{ hashFiles('kpqc.cabal') }}
+          restore-keys: ${{ runner.os }}-ghc-${{ matrix.ghc }}-
+      - run: cabal check
+      - run: cabal build all --enable-tests --ghc-options="-Werror -optc-Wall -optc-Wextra -optc-Werror"
+      - run: cabal test spec
+      - name: Build documentation
+        if: matrix.os == 'ubuntu-latest' && matrix.ghc == '9.14'
+        run: cabal haddock all --haddock-for-hackage -j1
+      - name: Build source distribution
+        if: matrix.os == 'ubuntu-latest' && matrix.ghc == '9.14'
+        run: cabal sdist
+
+  known-answer-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: KpqC/kpqc-test-vectors
+          ref: 179dcc05ece2e22262cea1a61f3cdf1a5b08a304
+          path: kpqc-test-vectors
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: "9.14"
+          cabal-version: latest
+      - uses: actions/cache@v6
+        with:
+          path: ~/.cache/cabal
+          key: ${{ runner.os }}-ghc-9.14-kat-${{ hashFiles('kpqc.cabal') }}
+          restore-keys: ${{ runner.os }}-ghc-9.14-kat-
+      - name: Validate known-answer tests
+        env:
+          KPQC_TEST_VECTORS: ${{ github.workspace }}/kpqc-test-vectors
+        run: cabal test kat -fkat --enable-tests --ghc-options="-Werror -optc-Wall -optc-Wextra -optc-Werror"
