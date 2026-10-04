@@ -1,5 +1,5 @@
 cabal-version:      3.4
-name:               kpqc
+name:               KpqC
 version:            0.1.0
 synopsis:           Haskell bindings for KpqC post-quantum algorithms
 description:
@@ -94,10 +94,10 @@ library
     base >=4.14 && <5,
     bytestring >=0.10.12 && <0.13,
     memory >=0.16 && <0.19,
-    kpqc:native-aimer,
-    kpqc:native-haetae,
-    kpqc:native-ntruplus,
-    kpqc:native-smaugt
+    KpqC:native-aimer,
+    KpqC:native-haetae,
+    KpqC:native-ntruplus,
+    KpqC:native-smaugt
 
 test-suite spec
   type:             exitcode-stdio-1.0
@@ -109,7 +109,7 @@ test-suite spec
     base >=4.14 && <5,
     bytestring >=0.10.12 && <0.13,
     memory >=0.16 && <0.19,
-    kpqc
+    KpqC
 
 test-suite kat
   type:             exitcode-stdio-1.0
@@ -125,11 +125,11 @@ test-suite kat
       containers >=0.6 && <0.9,
       filepath >=1.4 && <1.6,
       memory >=0.16 && <0.19,
-      kpqc,
-      kpqc:native-aimer,
-      kpqc:native-haetae,
-      kpqc:native-ntruplus,
-      kpqc:native-smaugt
+      KpqC,
+      KpqC:native-aimer,
+      KpqC:native-haetae,
+      KpqC:native-ntruplus,
+      KpqC:native-smaugt
     c-sources:
       cbits/test/aes.c
       cbits/test/aes_bridge.c

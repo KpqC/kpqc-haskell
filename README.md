@@ -15,10 +15,10 @@ does not download native libraries during compilation.
 
 ## Install
 
-Add `kpqc` to your package's dependencies:
+Add `KpqC` to your package's dependencies:
 
 ```cabal
-build-depends: kpqc ^>=0.1.0
+build-depends: KpqC ^>=0.1.0
 ```
 
 ## Available schemes
