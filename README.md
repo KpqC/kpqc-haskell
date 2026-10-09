@@ -138,4 +138,4 @@ Algorithm encodings and parameter sizes follow the exact upstream revisions
 listed below and may differ from other revisions of the same algorithms.
 
 Third-party licenses and attributions are listed in
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[THIRD_PARTY_NOTICES.md](https://github.com/KpqC/kpqc-haskell/blob/main/THIRD_PARTY_NOTICES.md).
