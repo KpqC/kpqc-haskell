@@ -1,8 +1,8 @@
 # KpqC
 
-KpqC provides synchronous Haskell APIs for AIMer, HAETAE, NTRU+, and
-SMAUG-T. Native operations use safe FFI calls so other Haskell threads can
-continue running.
+KpqC provides synchronous Haskell APIs for the AIMer and HAETAE signature
+schemes and the NTRU+ and SMAUG-T key encapsulation mechanisms (KEMs). Native
+operations use safe FFI calls so other Haskell threads can continue running.
 
 ## Runtime support
 
@@ -27,8 +27,8 @@ build-depends: KpqC ^>=0.1.0
 | --- | --- | --- |
 | **AIMer** | Signature | `AIMer128f`, `AIMer128s`, `AIMer192f`, `AIMer192s`, `AIMer256f`, `AIMer256s` |
 | **HAETAE** | Signature | `HAETAE2`, `HAETAE3`, `HAETAE5` |
-| **NTRU+** | Key encapsulation | `NTRUPlus768`, `NTRUPlus864`, `NTRUPlus1152` |
-| **SMAUG&#8209;T** | Key encapsulation | `SMAUGT128`, `SMAUGT192`, `SMAUGT256`, `TiMER` |
+| **NTRU+** | KEM | `NTRUPlus768`, `NTRUPlus864`, `NTRUPlus1152` |
+| **SMAUG&#8209;T** | KEM | `SMAUGT128`, `SMAUGT192`, `SMAUGT256`, `TiMER` |
 
 ### Signatures
 
@@ -49,7 +49,10 @@ main = do
 of at most 255 bytes. Verification fails when the supplied context differs
 from the signing context.
 
-### Key encapsulation
+### KEM
+
+A KEM creates a shared secret for a sender and a recipient. The public key may
+be distributed; the secret key and resulting shared secret must remain private.
 
 ```haskell
 import Crypto.KpqC
@@ -94,7 +97,7 @@ All sizes are in bytes.
 | `HAETAE3` | 1,472 | 2,112 | 2,349 |
 | `HAETAE5` | 2,080 | 2,752 | 2,948 |
 
-#### Key encapsulation
+#### KEM
 
 | Constructor | Public key | Secret key | Ciphertext | Shared secret |
 | --- | ---: | ---: | ---: | ---: |

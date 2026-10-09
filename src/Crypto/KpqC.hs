@@ -53,7 +53,7 @@ data SignatureAlgorithm
   | HAETAE5
   deriving (Bounded, Enum, Eq, Ord, Read, Show)
 
--- | A key-encapsulation parameter set.
+-- | A KEM parameter set.
 data KEMAlgorithm
   = NTRUPlus768
   | NTRUPlus864
@@ -72,7 +72,7 @@ data SignatureSizes = SignatureSizes
   }
   deriving (Eq, Show)
 
--- | Fixed byte lengths for a key-encapsulation parameter set.
+-- | Fixed byte lengths for a KEM parameter set.
 data KEMSizes = KEMSizes
   { kemPublicKeyBytes :: !Int,
     kemSecretKeyBytes :: !Int,
@@ -175,7 +175,7 @@ instance Algorithm KEMAlgorithm where
 signatureAlgorithms :: [SignatureAlgorithm]
 signatureAlgorithms = [minBound .. maxBound]
 
--- | Every supported key-encapsulation parameter set.
+-- | Every supported KEM parameter set.
 kemAlgorithms :: [KEMAlgorithm]
 kemAlgorithms = [minBound .. maxBound]
 
@@ -192,7 +192,7 @@ signatureSizes algorithm = case algorithm of
   HAETAE3 -> SignatureSizes 1472 2112 2349
   HAETAE5 -> SignatureSizes 2080 2752 2948
 
--- | Return the fixed byte lengths for a key-encapsulation parameter set.
+-- | Return the fixed byte lengths for a KEM parameter set.
 kemSizes :: KEMAlgorithm -> KEMSizes
 kemSizes algorithm = case algorithm of
   NTRUPlus768 -> KEMSizes 1152 2336 1152 32
