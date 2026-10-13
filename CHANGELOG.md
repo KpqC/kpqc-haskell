@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 - 2026-10-05
+## 0.1.0 - 2026-10-13
 
 - Initial release with synchronous Haskell APIs for AIMer, HAETAE, NTRU+, and
   SMAUG-T.

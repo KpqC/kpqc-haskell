@@ -4,6 +4,9 @@ KpqC provides synchronous Haskell APIs for the AIMer and HAETAE signature
 schemes and the NTRU+ and SMAUG-T key encapsulation mechanisms (KEMs). Native
 operations use safe FFI calls so other Haskell threads can continue running.
 
+This Haskell package is independently maintained and is not an official
+distribution from the algorithm authors.
+
 ## Runtime support
 
 - GHC 8.10 or newer and Cabal 3.4 or newer
