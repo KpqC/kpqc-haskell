@@ -26,12 +26,11 @@ build-depends: KpqC ^>=0.1.0
 
 ## Available schemes
 
-| Algorithm | Type | Constructors |
-| --- | --- | --- |
-| **AIMer** | Signature | `AIMer128f`, `AIMer128s`, `AIMer192f`, `AIMer192s`, `AIMer256f`, `AIMer256s` |
-| **HAETAE** | Signature | `HAETAE2`, `HAETAE3`, `HAETAE5` |
-| **NTRU+** | KEM | `NTRUPlus768`, `NTRUPlus864`, `NTRUPlus1152` |
-| **SMAUG&#8209;T** | KEM | `SMAUGT128`, `SMAUGT192`, `SMAUGT256`, `TiMER` |
+- **AIMer** (signature): `AIMer128f`, `AIMer128s`, `AIMer192f`,
+  `AIMer192s`, `AIMer256f`, and `AIMer256s`
+- **HAETAE** (signature): `HAETAE2`, `HAETAE3`, and `HAETAE5`
+- **NTRU+** (KEM): `NTRUPlus768`, `NTRUPlus864`, and `NTRUPlus1152`
+- **SMAUG-T** (KEM): `SMAUGT128`, `SMAUGT192`, `SMAUGT256`, and `TiMER`
 
 ### Signatures
 
@@ -88,29 +87,31 @@ All sizes are in bytes.
 
 #### Signatures
 
-| Constructor | Public key | Secret key | Signature |
-| --- | ---: | ---: | ---: |
-| `AIMer128f` | 32 | 48 | 6,944 |
-| `AIMer128s` | 32 | 48 | 4,704 |
-| `AIMer192f` | 48 | 72 | 15,408 |
-| `AIMer192s` | 48 | 72 | 10,320 |
-| `AIMer256f` | 64 | 96 | 31,360 |
-| `AIMer256s` | 64 | 96 | 20,224 |
-| `HAETAE2` | 992 | 1,408 | 1,474 |
-| `HAETAE3` | 1,472 | 2,112 | 2,349 |
-| `HAETAE5` | 2,080 | 2,752 | 2,948 |
+- `AIMer128f`: public key 32; secret key 48; signature 6,944
+- `AIMer128s`: public key 32; secret key 48; signature 4,704
+- `AIMer192f`: public key 48; secret key 72; signature 15,408
+- `AIMer192s`: public key 48; secret key 72; signature 10,320
+- `AIMer256f`: public key 64; secret key 96; signature 31,360
+- `AIMer256s`: public key 64; secret key 96; signature 20,224
+- `HAETAE2`: public key 992; secret key 1,408; signature 1,474
+- `HAETAE3`: public key 1,472; secret key 2,112; signature 2,349
+- `HAETAE5`: public key 2,080; secret key 2,752; signature 2,948
 
-#### KEM
+#### KEMs
 
-| Constructor | Public key | Secret key | Ciphertext | Shared secret |
-| --- | ---: | ---: | ---: | ---: |
-| `NTRUPlus768` | 1,152 | 2,336 | 1,152 | 32 |
-| `NTRUPlus864` | 1,296 | 2,624 | 1,296 | 32 |
-| `NTRUPlus1152` | 1,728 | 3,488 | 1,728 | 32 |
-| `SMAUGT128` | 672 | 832 | 672 | 32 |
-| `SMAUGT192` | 1,088 | 1,312 | 992 | 32 |
-| `SMAUGT256` | 1,440 | 1,728 | 1,376 | 32 |
-| `TiMER` | 672 | 832 | 608 | 32 |
+- `NTRUPlus768`: public key 1,152; secret key 2,336; ciphertext 1,152;
+  shared secret 32
+- `NTRUPlus864`: public key 1,296; secret key 2,624; ciphertext 1,296;
+  shared secret 32
+- `NTRUPlus1152`: public key 1,728; secret key 3,488; ciphertext 1,728;
+  shared secret 32
+- `SMAUGT128`: public key 672; secret key 832; ciphertext 672; shared
+  secret 32
+- `SMAUGT192`: public key 1,088; secret key 1,312; ciphertext 992; shared
+  secret 32
+- `SMAUGT256`: public key 1,440; secret key 1,728; ciphertext 1,376; shared
+  secret 32
+- `TiMER`: public key 672; secret key 832; ciphertext 608; shared secret 32
 
 ## Tests
 
